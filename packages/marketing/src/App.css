@@ -52,6 +52,17 @@ h6 {
   overflow: hidden;
 }
 
+.pricing{
+  padding:  0.4rem;
+  /* margin: auto;
+  max-width:1000px; */
+}
+.pricing button{
+  padding: 20px;
+  display: block;
+  margin: auto;
+}
+
 .btn {
   display: inline-block;
   border: none;

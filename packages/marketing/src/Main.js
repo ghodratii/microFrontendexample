@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 function Main({ selectItems }) {
   return (
     <div className="container">
-      <Link to="/pricing">
-        <button>pricing</button>
-      </Link>
-      <ProductList />
+      <div className="pricing">
+        <Link to="/pricing">
+          <button>pricing</button>
+        </Link>
+        <ProductList />
+      </div>
       {selectItems.length !== 0 ? <ProductsTable /> : ""}
     </div>
   );

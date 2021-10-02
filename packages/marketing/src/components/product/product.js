@@ -22,7 +22,7 @@ class Product extends React.Component {
     const { item, addItem, removeItem } = this.props;
     const { employee_name, employee_salary } = item;
     return (
-      <div className="card item">
+      <div className={`card item ${compare ? "" : "item-selected"}`}>
         <img
           src={
             "https://i.picsum.photos/id/1080/6858/4574.jpg?hmac=qMYBjROs2Wu589QQXRAYsxDJu4ZuRQ4PKDpb3x_Oouw"

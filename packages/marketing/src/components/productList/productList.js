@@ -13,13 +13,16 @@ class ProductList extends React.Component {
 
   render() {
     const { productList } = this.props;
+    const showProduct= productList?.filter((item,key)=>{
+      if (key<12) return item;
+    })
 
     return (
       <div id="home-articles" className="py-2">
         <div className="container">
           <div className="articles-container">
-            {productList
-              ? productList.map((item) => <Product key={item.id} item={item} />)
+            {showProduct
+              ? showProduct.map((item) => <Product key={item.id} item={item} />)
               : ""}
           </div>
         </div>

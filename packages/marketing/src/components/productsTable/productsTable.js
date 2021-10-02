@@ -8,8 +8,8 @@ const ProductsTable = ({ selectItems }) => {
       <thead>
         <tr>
           <th></th>
-          {selectItems.map((item) => (
-            <th>{item.employee_name}</th>
+          {selectItems.map((item,key) => (
+            <th key={key}>{item.employee_name}</th>
           ))}
         </tr>
       </thead>
