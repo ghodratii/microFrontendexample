@@ -5,10 +5,13 @@ import {
   createGenerateClassName,
 } from "@material-ui/core/styles";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import {store,persistor} from "./redux/store";
+// import persistor from "./redux/store";
 import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
+import ProductsTable from "./components/productsTable/productsTable";
 import Main from "./Main";
+import { PersistGate } from 'redux-persist/integration/react';
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "ma",
@@ -19,12 +22,14 @@ export default ({ history }) => {
     <div>
       <StylesProvider generateClassName={generateClassName}>
         <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <Router history={history}>
             <Switch>
-              <Route exact path="/pricing" component={Pricing} />
+              <Route exact path="/table" component={ProductsTable} />
               <Route path="/" component={Main} />
             </Switch>
           </Router>
+          </PersistGate>
         </Provider>
       </StylesProvider>
     </div>

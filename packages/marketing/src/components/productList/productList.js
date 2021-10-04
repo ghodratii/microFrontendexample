@@ -6,13 +6,25 @@ import "./productList.style.scss";
 
 class ProductList extends React.Component {
   componentDidMount() {
-    const { fetchProducts } = this.props;
+    const { fetchProducts,selectItems } = this.props;
+    if(selectItems.length===0)
 
     fetchProducts();
   }
+  // checkProduct = () => {
+    
+  //   const { productList,selectItems } = this.props;
+  //   productList.map((item)=>{
+  //     if(selectItems.includes(item))
+  //     return <Product key={item.id} item={item} compare={false}/>
+  //     else return <Product key={item.id} item={item} compare={true}/>
+
+  //   })
+
+  // }
 
   render() {
-    const { productList } = this.props;
+    const { productList,selectItems } = this.props;
     const showProduct= productList?.filter((item,key)=>{
       if (key<12) return item;
     })
@@ -21,9 +33,12 @@ class ProductList extends React.Component {
       <div id="home-articles" className="py-2">
         <div className="container">
           <div className="articles-container">
-            {showProduct
-              ? showProduct.map((item) => <Product key={item.id} item={item} />)
-              : ""}
+            {productList&&
+               productList.map((item) => 
+               selectItems.includes(item)?
+              <Product key={item.id} item={item} compare={false}/>
+              :<Product key={item.id} item={item} compare={true}/>)
+              }
           </div>
         </div>
       </div>
@@ -32,12 +47,15 @@ class ProductList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { producList } = state;
+  const { producList,selectedProducts } = state;
 
   const productList = producList.productList;
+  const selectItems = selectedProducts.selectItems;
 
-  return { productList };
+  return { productList,selectItems };
 };
+
+
 const mapDispatchToProps = (dispatch) => ({
   fetchProducts: () => dispatch(fetchProducts()),
 });

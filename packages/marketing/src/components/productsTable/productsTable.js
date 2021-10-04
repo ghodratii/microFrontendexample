@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import "./productTable.scss";
 const ProductsTable = ({ selectItems }) => {
   return (
-    <table id="customers">
+    <div className="container">
+    {
+      selectItems.length !== 0?
+      <table id="customers">
       <thead>
         <tr>
-          <th></th>
+          <th>employee_name</th>
           {selectItems.map((item,key) => (
             <th key={key}>{item.employee_name}</th>
           ))}
@@ -29,7 +32,9 @@ const ProductsTable = ({ selectItems }) => {
           ))}
         </tr>
       </tbody>
-    </table>
+    </table>:<div>no data</div>
+    }
+   </div>
   );
 };
 const mapStateToProps = (state) => {
