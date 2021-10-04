@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import "./productTable.scss";
 const ProductsTable = ({ selectItems }) => {
   return (
-    <div className="container">
+    <div className="table-container">
     {
       selectItems.length !== 0?
       <table id="customers">

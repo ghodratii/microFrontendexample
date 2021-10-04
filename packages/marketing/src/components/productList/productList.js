@@ -11,17 +11,7 @@ class ProductList extends React.Component {
 
       fetchProducts();
   }
-  // checkProduct = () => {
-
-  //   const { productList,selectItems } = this.props;
-  //   productList.map((item)=>{
-  //     if(selectItems.includes(item))
-  //     return <Product key={item.id} item={item} compare={false}/>
-  //     else return <Product key={item.id} item={item} compare={true}/>
-
-  //   })
-
-  // }
+  
 
   render() {
     const { productList, selectItems } = this.props;
